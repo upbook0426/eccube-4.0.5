@@ -3747,6 +3747,27 @@
       <argument type="service" id="service_container"/>
       <factory class="Eccube\Service\Composer\ComposerServiceFactory" method="createService"/>
     </service>
+    <service id="Customize\Controller\TestHelloController" class="Customize\Controller\TestHelloController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <call method="setEccubeConfig">
+        <argument type="service" id="Eccube\Common\EccubeConfig"/>
+      </call>
+      <call method="setEntityManager">
+        <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.data_collector"/>
+      </call>
+      <call method="setSession">
+        <argument type="service" id="session"/>
+      </call>
+      <call method="setFormFactory">
+        <argument type="service" id="form.factory"/>
+      </call>
+      <call method="setEventDispatcher">
+        <argument type="service" id="debug.event_dispatcher"/>
+      </call>
+    </service>
     <service id="twig.extension.stringloader" class="Twig_Extension_StringLoader" public="false" autowire="true" autoconfigure="true">
       <tag name="twig.extension"/>
     </service>
@@ -4017,7 +4038,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.12vbxor"/>
+      <argument type="service" id="service_locator.w55nv3b"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -6992,7 +7013,7 @@
       <argument type="service" id="service_locator.nja5ter"/>
       <argument type="iterator">
         <argument key="security.firewall.map.context.dev" type="service" id="security.request_matcher.zfhj2lw"/>
-        <argument key="security.firewall.map.context.admin" type="service" id="security.request_matcher.yk_1abk"/>
+        <argument key="security.firewall.map.context.admin" type="service" id="security.request_matcher.fc_ctt_"/>
         <argument key="security.firewall.map.context.customer" type="service" id="security.request_matcher.00qf1z7"/>
       </argument>
     </service>
@@ -7084,14 +7105,14 @@
     </service>
     <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
       <call method="add">
-        <argument type="service" id="security.request_matcher.fdnbabe"/>
+        <argument type="service" id="security.request_matcher..p6wrxr"/>
         <argument type="collection">
           <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id="security.request_matcher.frfaowq"/>
+        <argument type="service" id="security.request_matcher.gqi2akt"/>
         <argument type="collection">
           <argument>ROLE_ADMIN</argument>
         </argument>
@@ -7458,7 +7479,7 @@
     <service id="security.firewall.map.config.admin" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig" public="false">
       <argument>admin</argument>
       <argument>security.user_checker</argument>
-      <argument>security.request_matcher.yk_1abk</argument>
+      <argument>security.request_matcher.fc_ctt_</argument>
       <argument>true</argument>
       <argument>false</argument>
       <argument>Eccube\Security\Core\User\MemberProvider</argument>
@@ -7472,7 +7493,7 @@
       </argument>
       <argument>null</argument>
     </service>
-    <service id="security.request_matcher.yk_1abk" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+    <service id="security.request_matcher.fc_ctt_" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/%env(ECCUBE_ADMIN_ROUTE)%/</argument>
     </service>
     <service id="security.context_listener.0" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
@@ -7792,10 +7813,10 @@
         <argument key="security.firewall.map.context.dev" type="service" id="security.firewall.map.context.dev"/>
       </argument>
     </service>
-    <service id="security.request_matcher.fdnbabe" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+    <service id="security.request_matcher..p6wrxr" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/%env(ECCUBE_ADMIN_ROUTE)%/login</argument>
     </service>
-    <service id="security.request_matcher.frfaowq" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+    <service id="security.request_matcher.gqi2akt" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/%env(ECCUBE_ADMIN_ROUTE)%/</argument>
     </service>
     <service id="security.request_matcher.7swfsnm" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
@@ -9994,6 +10015,8 @@
     <service id="abstract.instanceof.Eccube\Twig\Extension\TwigIncludeExtension" class="Eccube\Twig\Extension\TwigIncludeExtension" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\EventDispatcher\EventSubscriberInterface.0.Eccube\Util\CacheUtil" class="Eccube\Util\CacheUtil" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.Eccube\Util\CacheUtil" class="Eccube\Util\CacheUtil" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.Customize\Controller\TestHelloController" class="Customize\Controller\TestHelloController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.Customize\Controller\TestHelloController" class="Customize\Controller\TestHelloController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Twig_ExtensionInterface.0.twig.extension.stringloader" class="Twig_Extension_StringLoader" public="false" autowire="true" abstract="true"/>
     <service id="instanceof.Twig\Extension\ExtensionInterface.0.twig.extension.stringloader" class="Twig_Extension_StringLoader" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.twig.extension.stringloader" class="Twig_Extension_StringLoader" public="false" autowire="true" autoconfigure="true" abstract="true"/>
@@ -10617,7 +10640,7 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id="service_locator.12vbxor" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.w55nv3b" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Eccube\Controller\Admin\Content\BlockController:delete" type="service" id="service_locator.ufjm28y"/>

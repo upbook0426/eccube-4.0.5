@@ -4308,6 +4308,22 @@ class EccubeDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkB
         }
         not_user_data:
 
+        // test_hello
+        if ('/test/hello' === $pathinfo) {
+            $ret = array (  '_controller' => 'Customize\\Controller\\TestHelloController::index',  '_route' => 'test_hello',);
+            $requiredSchemes = array (  'https' => 0,  'http' => 1,);
+            if (!isset($requiredSchemes[$context->getScheme()])) {
+                if ('GET' !== $canonicalMethod) {
+                    goto not_test_hello;
+                }
+
+                return array_replace($ret, $this->redirect($rawPathinfo, 'test_hello', key($requiredSchemes)));
+            }
+
+            return $ret;
+        }
+        not_test_hello:
+
         // logout
         if ('/logout' === $pathinfo) {
             $ret = ['_route' => 'logout'];

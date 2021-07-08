@@ -6,16 +6,24 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Eccube\Controller\AbstractController;
+use Eccube\Repository\ProductRepository;
+
 
 class TestHelloController extends AbstractController
 {
-    /**
-     * TestHelloController
-     * Constructor.
-     *
+   /**
+     * @var ProductRepository
      */
-    public function __construct()
-    {
+    protected $productRepository;
+
+    /**
+     * TestController
+     * Constructor.
+     * @param ProductRepository $productRepository　
+     */
+    public function __construct(ProductRepository $productRepository){
+
+        $this->productRepository = $productRepository;
     }
 
     /**
@@ -26,6 +34,7 @@ class TestHelloController extends AbstractController
      */
     public function index(Request $request)
     {
-        return [];
+           $product = $this->productRepository->find(3);
+        return ['product'->$product];
     }
 }
