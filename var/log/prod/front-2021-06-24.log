@@ -1,0 +1,2 @@
+[2021-06-24 12:47:15] app.INFO [N/A] [a41a458] [anon.] [Eccube\Log\Logger:log:68] - PROCESS END ["admin_homepage"] [GET, /eccube-4.0.5/bi54fyu/, 127.0.0.1, NULL, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36]
+[2021-06-24 12:47:19] app.INFO [N/A] [1f21e63] [anon.] [Eccube\Log\Logger:log:68] - PROCESS END ["admin_login"] [GET, /eccube-4.0.5/bi54fyu/login, 127.0.0.1, NULL, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36]
