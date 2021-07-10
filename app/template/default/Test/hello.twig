@@ -1,1 +1,35 @@
-<p>hello Eccube <p>
+{% extends 'default_frame.twig' %}
+
+{% block main %}
+{# {% for product in products %} #}
+{% if product is defined and product %}
+<img src="{{ asset( product.getMainListImage()|no_image_product, 'save_image') }}">
+<p>{{ product  }}</p>
+{# {% endfor %} #}
+{% endif %}
+<a href="{{ url('test_hello',{'name':'テスト商品名'}) }}">link</a>
+{% if product is defined and product %}
+    <form method="post" action="{{ url('test_hello') }}">
+        <select name="name">
+        {% for product in products %}
+            <option value="{{ product }}">{{ product }}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="送信" />
+    </form>
+{% endif %}
+{{ form_start(NameForm, {'method':'post', 'action':url('test_hello')}) }}
+<p>商品名</p>
+    {{ form_widget(NameForm.id) }}
+    {{ form_errors(NameForm.id) }}
+<p>産地<p>
+    {{ form_widget(NameForm.production_area) }}
+    {{ form_errors(NameForm.production_area) }}
+{{ form_end(NameForm) }}
+<p>{{ Status }}</p>
+{# {{ form_start(NameForm, {'method':'post', 'action':url('test_hello')}) }}
+    {{ form_widget(NameForm.name) }}
+    {{ form_errors(NameForm.name) }}
+{{ form_end(NameForm) }}
+<p>{{ Status }}</p> #}
+{% endblock %}
