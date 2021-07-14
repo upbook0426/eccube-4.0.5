@@ -1,0 +1,9 @@
+common.select: 選択してね
+
+admin.content.test_management: テスト
+admin.content.test.id: ID
+admin.content.update_date:　更新日時
+admin.content.test.title: タイトル
+admin.content.test.test_registration: テスト情報登録
+
+admin.common.jan_code: 'JANコード'

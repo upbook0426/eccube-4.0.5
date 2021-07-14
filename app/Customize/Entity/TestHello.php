@@ -23,7 +23,7 @@ use Doctrine\ORM\Mapping as ORM;
      * @ORM\InheritanceType("SINGLE_TABLE")
      * @ORM\DiscriminatorColumn(name="discriminator_type", type="string", length=255)
      * @ORM\HasLifecycleCallbacks()
-     * @ORM\Entity(repositoryClass="Customize\Repository\TestHelloRepository")
+     * @ORM\Entity(repositoryClass="Customize\Repository\TestNewsRepository")
      * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
      */
     class TestHello extends AbstractEntity

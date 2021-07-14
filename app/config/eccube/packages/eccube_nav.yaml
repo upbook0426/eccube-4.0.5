@@ -55,6 +55,9 @@ parameters:
                 news:
                     name: admin.content.news_management
                     url : admin_content_news
+                test:
+                    name: admin.content.test_management
+                    url : admin_content_test
                 file:
                     name: admin.content.file_management
                     url: admin_content_file

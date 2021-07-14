@@ -13,53 +13,62 @@
 
 namespace Customize\Form\Type;
 
-
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class TestNewType extends AbstractType
-{
-    // /**
-    //  * @var TestProductRepository
-    //  */
-    // protected $testProductRepository;
+use Customize\Repository\TestNewsRepository;
 
-    // /**
-    //  * TestProductNameType constructor.
-    //  *
-    //  * @param TestProductRepository $testProductRepository
-    //  */
-    // public function __construct(
-    //     TestProductRepository $testProductRepository
-    // ) {
-    //     $this->testProductRepository = $testProductRepository;
-    // }
+class TestUpdateType extends AbstractType
+{
+    /**
+     * @var TestNewsRepository
+     */
+    protected $testNewsRepository;
+
+    /**
+     * TestUpdateType constructor.
+     *
+     * @param TestNewsRepository $testNewsRepository
+     */
+    public function __construct(
+        TestNewsRepository $testNewsRepository
+    ) {
+        $this->testNewsRepository = $testNewsRepository;
+    }
 
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // $testProducts = $this->testProductRepository->FindAll();
-        // $choices = [];
-        // foreach ($testProducts as $testProduct) {
-        //     $name = $testProduct->getName();
-        //     $choices[$name] = $name;
-        // }
+        $testNews = $this->testNewsRepository->FindAll();
+        $choices = [];
+        foreach ($testNews as $testNews) {
+            $id = $testNews->getId();
+            $name = $id.':'.$testNews->getTitle();
+            $choices[$name] = $id;
+        }
+
+        $builder->add('id', ChoiceType::class, [
+          'choices' => ['common.select' => '__unselected'] + $choices,
+          'data' => '__unselceted',
+          'empty_data' => '__unselected',
+        ]);
 
         $builder->add('title', TextType::class, [
           'constraints' => [
             new Assert\NotBlank(),#空の状態だとエラーを返す処理
-
           ],
         ]);
 
+
         $builder->add('submit', SubmitType::class, [
-            'label' => '追加',
+            'label' => '更新',
         ]);
     }
 

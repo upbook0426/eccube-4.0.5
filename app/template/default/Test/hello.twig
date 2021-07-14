@@ -2,11 +2,11 @@
 
 {% block main %}
 {# {% for product in products %} #}
-{% if product is defined and product %}
+{# {% if product is defined and product %}
 <img src="{{ asset( product.getMainListImage()|no_image_product, 'save_image') }}">
 <p>{{ product  }}</p>
 {# {% endfor %} #}
-{% endif %}
+{# {% endif %}
 <a href="{{ url('test_hello',{'name':'テスト商品名'}) }}">link</a>
 {% if product is defined and product %}
     <form method="post" action="{{ url('test_hello') }}">
@@ -18,18 +18,50 @@
         <input type="submit" value="送信" />
     </form>
 {% endif %}
-{{ form_start(NameForm, {'method':'post', 'action':url('test_hello')}) }}
-<p>商品名</p>
+{{ form_start(NameForm, {'method':'post', 'action':url('test_hello')}) }} #}
+
+{# <p>商品名</p>
     {{ form_widget(NameForm.id) }}
     {{ form_errors(NameForm.id) }}
 <p>産地<p>
     {{ form_widget(NameForm.production_area) }}
     {{ form_errors(NameForm.production_area) }}
 {{ form_end(NameForm) }}
-<p>{{ Status }}</p>
+<p>{{ Status }}</p> #}
+
 {# {{ form_start(NameForm, {'method':'post', 'action':url('test_hello')}) }}
     {{ form_widget(NameForm.name) }}
     {{ form_errors(NameForm.name) }}
 {{ form_end(NameForm) }}
 <p>{{ Status }}</p> #}
+<p>ニュース {{ Count }} </p>
+{% if news is defined and news %}
+<ul>
+    {% for new in news %}
+    <li> {{ new.getId() }}:{{ new.getTitle() }}</li>
+        {% endfor %}
+    </li>
+</ul>
+{% endif %}
+{{ form_start(NewForm, {'method':'post', 'action':url('test_hello')}) }}
+<p>[追加]</p>
+    {{ form_widget(NewForm.title) }}
+    {{ form_errors(NewForm.title) }}
+{{ form_end(NewForm) }}
+
+{{ form_start(NewForm, {'method':'post', 'action':url('test_hello')}) }}
+<p>[更新]</p>
+    {{ form_widget(UpdateForm.id) }}
+    {{ form_errors(UpdateForm.id) }}
+    {{ form_widget(UpdateForm.title) }}
+    {{ form_errors(UpdateForm.title) }}
+{{ form_end(UpdateForm) }}
+
+{{ form_start(NewForm, {'method':'post', 'action':url('test_hello')}) }}
+<p>[削除]</p>
+    {{ form_widget(DeleteForm.id) }}
+    {{ form_errors(DeleteForm.id) }}
+{{ form_end(DeleteForm) }}
+
+
 {% endblock %}

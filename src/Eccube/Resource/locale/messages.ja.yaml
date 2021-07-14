@@ -91,6 +91,7 @@ common.name.suffix: ' 様'
 # ブロック
 #------------------------------------------------------------------------------------
 
+admin.content.test_management: テスト
 front.block.cart.go_to_cart: カートへ進む
 front.block.cart.no_item: 現在カート内に商品はございません。
 front.block.footer.about_us: 当サイトについて

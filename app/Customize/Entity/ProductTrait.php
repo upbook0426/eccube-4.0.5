@@ -42,4 +42,34 @@ trait ProductTrait //ファイル名と合わせる
     {
         return $this->production_area;
     }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="number", type="string", length=13, nullable=true )
+     */
+    private $number;
+
+    /**
+     * get Number
+     *
+     * @return string
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * set Number
+     *
+     * @param string $number
+     * @return \Eccube\Entity\Shipping
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+        return $this;
+    }
+
 }

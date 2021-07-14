@@ -372,6 +372,19 @@ file that was distributed with this source code.
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="d-inline-block" data-tooltip="true" data-placement="top">
+                                            <span> {{ 'admin.common.jan_code'|trans }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <div>
+                                            {{ form_widget(form.number) }}
+                                            {{ form_errors(form.number) }}
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="collapse ec-collapse" id="addComment">
                                     <div class="row bg-ec-formGray pt-3 mb-2">
                                         <div class="col-3">
